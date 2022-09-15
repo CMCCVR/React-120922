@@ -1,23 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [name, setName] = useState("");
+  const [user, setUser] = useState({
+    id: 1,
+    pais: "Republica de Cabo Verde",
+    photo:
+      "https://viajecomnorma.com.br/wp-content/uploads/2019/11/Mapa-Cabo-Verde.jpg",
+  });
+
+  const objs = 
+
+  const [valor, setValor] = useState(0);
+
+  function FuncDiminuir() {
+    setValor(valor - 1);
+  }
+  function FuncAumentar() {
+    setValor(valor + 1);
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <h2>Nome: {name}</h2>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+      <div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Número: <b>{valor}</b>
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <button onClick={FuncAumentar}>Aumentar número!</button>
+        <button onClick={FuncDiminuir}>Diminuir número!</button>
+        <hr />
+        Nacionalidade: <b>{user.pais}</b>
+        <br />
+        <img src={user.photo} />
+      </div>
     </div>
   );
 }
